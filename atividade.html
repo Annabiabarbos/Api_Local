@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="cadastrar(event)">
+        <label for="fruta"></label>
+        <input type="text" id="fruta" placeholder="digite a fruta">
+
+        <button>Cadastrar</button>
+    </form>
+    <div id="listaFrutas"></div>
+    <script>
+        const arrFrutas = []
+        function cadastrar(e) {
+            e.preventDefault();
+        
+            const fruta = document.getElementById('fruta').value;
+            fruta.trim();
+            fruta.toLowerCase();
+
+            arrFrutas.push(fruta);
+
+            arrFrutas.sort();
+            let template = "<ul>";
+
+            arrFrutas.forEach(fruta => {
+                template += `<li>${fruta}</li>`;
+            });
+
+            template += "</ul>";
+
+            document.getElementById("listaFrutas").innerHTML = template;
+        }
+    </script>
+</body>
+
+</html>
